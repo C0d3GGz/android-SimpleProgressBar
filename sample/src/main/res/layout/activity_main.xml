@@ -8,6 +8,9 @@
 
     <de.thkoeln.simpleprogressbar.SimpleProgressBar
         android:id="@+id/myCustomProgressbar"
+        app:progress_primary="10"
+        app:progress_secondary="50"
+        app:max_progress="200"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"

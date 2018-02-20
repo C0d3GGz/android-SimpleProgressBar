@@ -3,6 +3,7 @@ package de.thkoeln.simpleprogressbar
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.support.constraint.ConstraintLayout
+import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -48,10 +49,15 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
     var secondaryColor = -1
         set(value) { field = value; secondaryDrawable.setColor(value) }
 
+    private val constraints : ConstraintSet
 
     init{
 
         LayoutInflater.from(context).inflate(R.layout.simple_progressbar, this)
+
+        //initialize constraint set
+        constraints = ConstraintSet()
+        constraints.clone(progressbar_layout)
 
         with(context!!.theme.obtainStyledAttributes(attrs, R.styleable.SimpleProgressBar, 0, 0)){
             try {
@@ -67,6 +73,11 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
                 secondaryColor = getInteger(R.styleable.SimpleProgressBar_secondary_progress_color, defaultSecondaryColor)
 
                 padding = getDimensionPixelSize(R.styleable.SimpleProgressBar_padding, 0)
+
+                maxProgress = getInteger(R.styleable.SimpleProgressBar_max_progress, maxProgress)
+                progress = getInteger(R.styleable.SimpleProgressBar_progress_primary, progress)
+                secondaryProgress = getInteger(R.styleable.SimpleProgressBar_progress_secondary,
+                        secondaryProgress)
 
             } finally {
                 recycle()
@@ -110,16 +121,21 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
     }
 
     private fun updateProgress(newProgress : Int, affectedView : View){
-        val ratio = newProgress / maxProgress.toFloat()
-        val progressWidth = (viewWidth * ratio) - (padding * 2)
-        if(progressWidth.toInt() <= 0){
-            affectedView.visibility = View.GONE
-        } else{
-            affectedView.visibility = View.VISIBLE
+
+        val affectedGuidelineId = when(affectedView){
+            progress_primary -> R.id.primary_progress_guide
+            progress_secondary -> R.id.secondary_progress_guide
+            else -> null
         }
-        val params = affectedView.layoutParams
-        params.width = progressWidth.toInt()
-        affectedView.layoutParams = params
+
+        affectedGuidelineId?.let {
+            var progressFloat = newProgress / maxProgress.toFloat()
+            progressFloat = if(progressFloat > 1f) 1f else progressFloat
+
+            constraints.setGuidelinePercent(affectedGuidelineId, progressFloat)
+            constraints.applyTo(progressbar_layout)
+        }
+
     }
 
     private fun updateText(){ progress_text.text = "$progress/$maxProgress" }
