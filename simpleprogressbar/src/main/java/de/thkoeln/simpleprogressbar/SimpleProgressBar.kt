@@ -106,11 +106,6 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
         secondaryDrawable.cornerRadius = radius
         progress_secondary.background = secondaryDrawable
 
-        val progressParams = progress_primary.layoutParams as MarginLayoutParams
-        progressParams.setMargins(padding, padding, padding, padding)
-
-        val secondaryParams = progress_secondary.layoutParams as MarginLayoutParams
-        secondaryParams.setMargins(padding, padding, padding, padding)
     }
 
     private fun draw(){
@@ -134,7 +129,22 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
 
             constraints.setGuidelinePercent(affectedGuidelineId, progressFloat)
             constraints.applyTo(progressbar_layout)
+            updateMargins()
         }
+
+    }
+
+    /**
+     * Somehow the margins will get lost when applying the constraint set to the layout.
+     * Use this fun to restore margins for both primary and secondary progress views to
+     * achieve an inner padding effect.
+     */
+    private fun updateMargins(){
+        val progressParams = progress_primary.layoutParams as MarginLayoutParams
+        progressParams.setMargins(padding, padding, padding, padding)
+
+        val secondaryParams = progress_secondary.layoutParams as MarginLayoutParams
+        secondaryParams.setMargins(padding, padding, padding, padding)
 
     }
 
