@@ -106,6 +106,11 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
         secondaryDrawable.cornerRadius = radius
         progress_secondary.background = secondaryDrawable
 
+        val progressParams = progress_primary.layoutParams as MarginLayoutParams
+        progressParams.setMargins(padding, padding, padding, padding)
+
+        val secondaryParams = progress_secondary.layoutParams as MarginLayoutParams
+        secondaryParams.setMargins(padding, padding, padding, padding)
     }
 
     private fun draw(){
@@ -117,34 +122,20 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
 
     private fun updateProgress(newProgress : Int, affectedView : View){
 
-        val affectedGuidelineId = when(affectedView){
-            progress_primary -> R.id.primary_progress_guide
-            progress_secondary -> R.id.secondary_progress_guide
+        val affectedGuideline = when(affectedView){
+            progress_primary -> primary_progress_guide
+            progress_secondary -> secondary_progress_guide
             else -> null
         }
 
-        affectedGuidelineId?.let {
+        affectedGuideline?.let {
             var progressFloat = newProgress / maxProgress.toFloat()
             progressFloat = if(progressFloat > 1f) 1f else progressFloat
 
-            constraints.setGuidelinePercent(affectedGuidelineId, progressFloat)
-            constraints.applyTo(progressbar_layout)
-            updateMargins()
+            val params = affectedGuideline.layoutParams as ConstraintLayout.LayoutParams
+            params.guidePercent = progressFloat
+            affectedGuideline.layoutParams = params
         }
-
-    }
-
-    /**
-     * Somehow the margins will get lost when applying the constraint set to the layout.
-     * Use this fun to restore margins for both primary and secondary progress views to
-     * achieve an inner padding effect.
-     */
-    private fun updateMargins(){
-        val progressParams = progress_primary.layoutParams as MarginLayoutParams
-        progressParams.setMargins(padding, padding, padding, padding)
-
-        val secondaryParams = progress_secondary.layoutParams as MarginLayoutParams
-        secondaryParams.setMargins(padding, padding, padding, padding)
 
     }
 
