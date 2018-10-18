@@ -37,7 +37,7 @@ compile files('libs/library.jar')
 ### Create SimpleProgressBar
 You can define the SimpleProgressBar both with xml and programmatic as in the following explained.
 #### xml
-Specify *app* namespace for your layout by adding `xmlns:app="http://schemas.android.com/apk/res-auto"`. Define the colors `colorPrimary` for primary, `colorSecondary`for secondary progress and `backgroundDefault` for the background color. You can as well change the inside padding with the `app:padding` element which in this example is set to 2dp.
+Specify the *app* namespace for your layout by adding `xmlns:app="http://schemas.android.com/apk/res-auto"`. Define the colors `colorPrimary` for primary, `colorSecondary` for secondary progress and `backgroundDefault` for the background color. You can as well change the inside padding with the `app:padding` element which in this example is set to `2dp`.
 ![SimpleProgressBar](screenshots/SimpleProgressBar_xml.png)
 
 ```xml
