@@ -16,7 +16,7 @@ private const val MAX_DEFAULT = 100
 
 class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLayout(context, attrs) {
 
-    var progress : Int = PROGRESS_DEFAULT
+    var primaryProgress : Int = PROGRESS_DEFAULT
         set(value) {
             field = if(value > maxProgress) maxProgress else value
             updateProgress(field, progress_primary)
@@ -43,7 +43,7 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
     var bgColor = -1
         set(value) { field = value; backgroundDrawable.setColor(value) }
 
-    var progressColor = -1
+    var primaryColor = -1
         set(value) { field = value; progressDrawable.setColor(value) }
 
     var secondaryColor = -1
@@ -66,16 +66,16 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
                 val defaultBgColor = ContextCompat.getColor(context, R.color.backgroundDefault)
                 bgColor = getInteger(R.styleable.SimpleProgressBar_background_color, defaultBgColor)
 
-                val defaultProgressColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
-                progressColor = getInteger(R.styleable.SimpleProgressBar_progress_color, defaultProgressColor)
+                val defaultProgressColor = ContextCompat.getColor(context, R.color.colorPrimary)
+                primaryColor = getInteger(R.styleable.SimpleProgressBar_primary_progress_color, defaultProgressColor)
 
-                val defaultSecondaryColor = ContextCompat.getColor(context, R.color.colorPrimary)
+                val defaultSecondaryColor = ContextCompat.getColor(context, R.color.colorSecondary)
                 secondaryColor = getInteger(R.styleable.SimpleProgressBar_secondary_progress_color, defaultSecondaryColor)
 
                 padding = getDimensionPixelSize(R.styleable.SimpleProgressBar_padding, 0)
 
-                maxProgress = getInteger(R.styleable.SimpleProgressBar_max_progress, maxProgress)
-                progress = getInteger(R.styleable.SimpleProgressBar_progress_primary, progress)
+                maxProgress = getInteger(R.styleable.SimpleProgressBar_progress_max, maxProgress)
+                primaryProgress = getInteger(R.styleable.SimpleProgressBar_progress_primary, primaryProgress)
                 secondaryProgress = getInteger(R.styleable.SimpleProgressBar_progress_secondary,
                         secondaryProgress)
 
@@ -98,7 +98,7 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
         backgroundDrawable.cornerRadius = radius
         progress_background.background = backgroundDrawable
 
-        progressDrawable.setColor(progressColor)
+        progressDrawable.setColor(primaryColor)
         progressDrawable.cornerRadius = radius
         progress_primary.background = progressDrawable
 
@@ -114,7 +114,7 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
     }
 
     private fun draw(){
-        updateProgress(progress, progress_primary)
+        updateProgress(primaryProgress, progress_primary)
         updateProgress(secondaryProgress, progress_secondary)
         invalidate(); requestLayout()
         updateText()
@@ -139,5 +139,5 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
 
     }
 
-    private fun updateText(){ progress_text.text = "$progress/$maxProgress" }
+    private fun updateText(){ progress_text.text = "$primaryProgress/$maxProgress" }
 }

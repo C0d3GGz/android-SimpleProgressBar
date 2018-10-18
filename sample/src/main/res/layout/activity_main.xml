@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.thkoeln.simpleprogressbar.sample.MainActivity">
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             tools:context="de.thkoeln.simpleprogressbar.sample.MainActivity">
 
     <de.thkoeln.simpleprogressbar.SimpleProgressBar
-        android:id="@+id/myCustomProgressbar"
-        app:progress_primary="10"
-        app:progress_secondary="50"
-        app:max_progress="200"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:corner_radius="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:padding="2dp" />
+            android:id="@+id/myCustomProgressbar"
+            app:progress_primary="10"
+            app:progress_secondary="40"
+            app:progress_max="100"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:corner_radius="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:padding="2dp"/>
 
     <Button
-        android:id="@+id/increaseProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Progress +10"
-        app:layout_constraintEnd_toStartOf="@+id/increaseSecondary"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myCustomProgressbar" />
+            android:id="@+id/increaseProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="Progress +10"
+            app:layout_constraintEnd_toStartOf="@+id/increaseSecondary"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myCustomProgressbar"/>
 
     <Button
-        android:id="@+id/increaseSecondary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Second +10"
-        app:layout_constraintBottom_toBottomOf="@+id/increaseProgress"
-        app:layout_constraintEnd_toStartOf="@+id/increaseMax"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/increaseProgress"
-        app:layout_constraintTop_toTopOf="@+id/increaseProgress" />
+            android:id="@+id/increaseSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Second +10"
+            app:layout_constraintBottom_toBottomOf="@+id/increaseProgress"
+            app:layout_constraintEnd_toStartOf="@+id/increaseMax"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/increaseProgress"
+            app:layout_constraintTop_toTopOf="@+id/increaseProgress"/>
 
     <Button
-        android:id="@+id/increaseMax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Max + 10"
-        app:layout_constraintBottom_toBottomOf="@+id/increaseSecondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/increaseSecondary"
-        app:layout_constraintTop_toTopOf="@+id/increaseSecondary" />
+            android:id="@+id/increaseMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Max + 10"
+            app:layout_constraintBottom_toBottomOf="@+id/increaseSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/increaseSecondary"
+            app:layout_constraintTop_toTopOf="@+id/increaseSecondary"/>
 
 </android.support.constraint.ConstraintLayout>
