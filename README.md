@@ -24,7 +24,7 @@ displaying intermediate level progress.
 	```
 
 ### Add manually
-1. download the [latest release](https://github.com/C0d3GGz/android-SimpleProgressBar/releases/latest)
+1. download the [latest release](https://github.com/C0d3ggz/android-SimpleProgressBar/releases/latest)
 2. import the library into your project as described in the [android docs](https://developer.android.com/studio/projects/android-library#AddDependency)
 
 
