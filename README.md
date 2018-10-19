@@ -24,20 +24,15 @@ displaying intermediate level progress.
 	```
 
 ### Add manually
-1. Clone or download this repository
-2. Build library
-2. Copy files into libs directory in your app folder
-    1. for \*.jar files: add this code to dependency on your gradle file
-    2. for \*.aar files: try from projectstructure / new module/ import from aar/jar
+1. download the [latest release](https://github.com/C0d3GGz/android-SimpleProgressBar/releases/latest)
+2. import the library into your project as described in the [android docs](https://developer.android.com/studio/projects/android-library#AddDependency)
 
-```groovy
-compile files('libs/library.jar')
-```
 
 ### Create SimpleProgressBar
 You can define the SimpleProgressBar both with xml and programmatic as in the following explained.
 #### xml
 Specify the *app* namespace for your layout by adding `xmlns:app="http://schemas.android.com/apk/res-auto"`. Define the colors `colorPrimary` for primary, `colorSecondary` for secondary progress and `backgroundDefault` for the background color. You can as well change the inside padding with the `app:padding` element which in this example is set to `2dp`.
+
 ![SimpleProgressBar](screenshots/SimpleProgressBar_xml.png)
 
 ```xml
