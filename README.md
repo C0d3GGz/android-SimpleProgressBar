@@ -19,7 +19,7 @@ displaying intermediate level progress.
 2. Add SimpleProgressBar dependency:
 	```groovy
     dependencies {
-        implementation 'com.github.C0d3GGz:android-SimpleProgressBar:-SNAPSHOT'
+        implementation 'com.github.C0d3GGz:android-SimpleProgressBar:v1.0.0'
     }
 	```
 
