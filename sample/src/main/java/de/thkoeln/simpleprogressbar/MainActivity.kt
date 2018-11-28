@@ -1,7 +1,8 @@
-package de.thkoeln.simpleprogressbar.sample
+package de.thkoeln.simpleprogressbar
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import de.thkoeln.simpleprogressbar.sample.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
