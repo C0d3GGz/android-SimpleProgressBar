@@ -32,6 +32,11 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
     var maxProgress : Int = MAX_DEFAULT
         set(value) { field = value; draw() }
 
+    var showText : Boolean = true
+        set(value) {
+            progress_text.visibility = if(value) View.VISIBLE else View.INVISIBLE
+        }
+
     private var radius : Float = 0f
     private var viewWidth = 0
     private var padding = 0
@@ -78,6 +83,8 @@ class SimpleProgressBar(context: Context?, attrs: AttributeSet?) : ConstraintLay
                 primaryProgress = getInteger(R.styleable.SimpleProgressBar_progress_primary, primaryProgress)
                 secondaryProgress = getInteger(R.styleable.SimpleProgressBar_progress_secondary,
                         secondaryProgress)
+
+                showText = getBoolean(R.styleable.SimpleProgressBar_showText, showText)
 
             } finally {
                 recycle()
