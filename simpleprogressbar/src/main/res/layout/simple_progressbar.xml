@@ -17,20 +17,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/progress_primary"
+        android:id="@+id/progress_secondary"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="@+id/progress_background"
         app:layout_constraintEnd_toStartOf="@+id/secondary_progress_guide"
         app:layout_constraintStart_toStartOf="@+id/progress_background"
         app:layout_constraintTop_toTopOf="@+id/progress_background" />
 
     <View
-        android:id="@+id/progress_secondary"
+        android:id="@+id/progress_primary"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorSecondary"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/progress_background"
         app:layout_constraintEnd_toStartOf="@+id/primary_progress_guide"
         app:layout_constraintStart_toStartOf="@+id/progress_background"
